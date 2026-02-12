@@ -62,15 +62,17 @@
 
 (defwidget battery-widget []
   (overlay
-    (scale :class "battery-scale ${battery.capacity >= 95 ? 'full' : ''} ${battery.status == 'Charging' ? 'charging' : battery.capacity <= 20 ? 'low' : 'normal'}"
+    (progress
+      :class "battery-progress ${battery.capacity >= 95 ? 'full' : ''} ${battery.status == 'Charging' ? 'charging' : battery.capacity <= 20 ? 'low' : 'normal'}"
       :value "${battery.capacity}"
-      :min 0
-      :max 100
-    :orientation "h")
-    (label :class "battery-text"
+      :orientation "h")
+    (label
+      :class "battery-text"
       :text "${battery.capacity}"
-    :halign "center")
-))
+      :halign "center")
+  )
+)
+
 
 (defwidget datetime-widget []
   (box :class "datetime"
