@@ -1,0 +1,17 @@
+* {
+  all: unset;
+  font-family: "SF Pro";
+  font-size: 13px;
+  font-weight: 500;
+  color:#000;
+}
+
+.bar {
+  padding: 0 10px;
+}
+
+.left, .center, .right {
+  background-color: rgba($color: #fff, $alpha: 0.3);
+  padding: 0px 15px;
+  border-radius: 15px;
+}
