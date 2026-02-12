@@ -1,5 +1,5 @@
 ;; Variables from listeners
-(deflisten hypr :initial "{\"class\": \"None\", \"active_workspace\": 0, \"workspaces\": []}"
+(deflisten hypr :initial "{\"class\": \"None\", \"active_workspace\": 0, \"workspaces\": [], \"workspace_array\": [1,2,3,4,5]}"
   `bash ~/.config/eww/scripts/hyprland-listener.sh`)
 (deflisten network :initial '{"connected":false}' 
   `bash ~/.config/eww/scripts/network-listener.sh`)
@@ -35,7 +35,7 @@
        :orientation "h"
        :space-evenly false
        :spacing 5
-    (for ws in "[1, 2, 3, 4, 5]"
+    (for ws in "${hypr.workspace_array}"
       (button
         :class "workspace ${hypr.active_workspace == ws ? 'active' : ''}"
         :onclick "hyprctl dispatch workspace ${ws}"

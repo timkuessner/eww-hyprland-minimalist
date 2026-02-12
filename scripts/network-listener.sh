@@ -20,7 +20,6 @@ get_network() {
 
 get_network
 
-# force unbuffered output
 stdbuf -o0 nmcli monitor | while read -r _; do
   get_network
 done
