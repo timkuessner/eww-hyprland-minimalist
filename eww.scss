@@ -15,3 +15,21 @@
   padding: 0px 15px;
   border-radius: 15px;
 }
+
+.center {
+  padding: 0px 5px;
+}
+
+.workspace label {
+  background-color: rgba(255, 255, 255, 0.3);
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding-right: 10px;
+  padding-left: 10px;
+  border-radius: 10px;
+}
+
+.workspace.active label {
+  padding-right: 20px;
+  padding-left: 20px;
+}

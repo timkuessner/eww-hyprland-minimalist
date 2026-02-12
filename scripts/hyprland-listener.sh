@@ -3,7 +3,7 @@ SOCKET="$XDG_RUNTIME_DIR/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock"
 
 get_hypr_info() {
   # Get active window class
-  class=$(hyprctl activewindow -j | jq -r '.class // "None"')
+  class=$(hyprctl activewindow -j | jq -r '.class // "Desktop"')
   
   # Get active workspace ID
   active_ws=$(hyprctl activeworkspace -j | jq -r '.id // 0')

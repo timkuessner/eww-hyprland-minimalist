@@ -35,9 +35,10 @@
        :orientation "h"
        :space-evenly false
        :spacing 5
-    (for ws in "[1,2,3,4,5]"
-      (button :class "workspace ${hypr.active_workspace == ws ? 'active' : ''} ${hypr.workspaces =~ '\\b${ws}\\b' ? 'occupied' : 'empty'}"
-              :onclick "hyprctl dispatch workspace ${ws}"
+    (for ws in "[1, 2, 3, 4, 5]"
+      (button
+        :class "workspace ${hypr.active_workspace == ws ? 'active' : ''}"
+        :onclick "hyprctl dispatch workspace ${ws}"
         (label :text "${ws}")))))
 
 (defwidget network-widget []
@@ -72,7 +73,7 @@
   :monitor 0
   :windowtype "dock"
   :geometry (geometry :x "0%"
-                      :y "0%"
+                      :y "10px"
                       :width "100%"
                       :height "30px"
                       :anchor "top center")
