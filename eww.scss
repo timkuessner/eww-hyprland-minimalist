@@ -3,14 +3,16 @@
   font-family: "SF Pro";
   font-size: 13px;
   font-weight: 500;
-  color:#000;
+  color: #000;
 }
 
 .bar {
   padding: 0 10px;
 }
 
-.left, .center, .right {
+.left,
+.center,
+.right {
   background-color: rgba($color: #fff, $alpha: 0.3);
   padding: 0px 15px;
   border-radius: 15px;
@@ -38,4 +40,50 @@
 .workspace.active label {
   padding-right: 20px;
   padding-left: 20px;
+}
+
+.network {
+  padding-right: 5px;
+}
+
+.battery-base {
+  border: 2px solid #000;
+  margin: 8px 5px;
+  min-width: 28px;
+  min-height: 12px;
+  border-radius: 6px;
+}
+
+.battery-scale trough {
+  border: 2px solid #000;
+  margin: 8px 0px;
+  min-width: 28px;
+  min-height: 12px;
+  border-radius: 6px;
+}
+
+.battery-scale trough highlight {
+  all: unset;
+  border-radius: 4px 0px 0px 4px;
+}
+
+.battery-scale.normal trough highlight {
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.battery-scale.charging trough highlight {
+  background: linear-gradient(90deg, #4ade80 0%, #22c55e 100%);
+}
+
+.battery-scale.low trough highlight {
+  background: linear-gradient(90deg, #ef4444 0%, #dc2626 100%);
+}
+
+.battery-scale.full trough highlight {
+  border-radius: 4px;
+}
+
+.battery-text {
+  font-size: 11px;
+  font-weight: 600;
 }

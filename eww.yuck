@@ -1,83 +1,96 @@
 ;; Variables from listeners
 (deflisten hypr :initial "{\"class\": \"None\", \"active_workspace\": 0, \"workspaces\": [], \"workspace_array\": [1,2,3,4,5]}"
-  `bash ~/.config/eww/scripts/hyprland-listener.sh`)
-(deflisten network :initial '{"connected":false}' 
-  `bash ~/.config/eww/scripts/network-listener.sh`)
-(deflisten battery :initial '{"capacity":0,"status":"Unknown"}' 
-  `bash ~/.config/eww/scripts/battery-listener.sh`)
-(deflisten datetime :initial '{"date":"","time":""}' 
-  `bash ~/.config/eww/scripts/datetime-listener.sh`)
+`bash ~/.config/eww/scripts/hyprland-listener.sh`)
+(deflisten network :initial '{"connected":false}'
+`bash ~/.config/eww/scripts/network-listener.sh`)
+(deflisten battery :initial '{"capacity":0,"status":"Unknown"}'
+`bash ~/.config/eww/scripts/battery-listener.sh`)
+(deflisten datetime :initial '{"date":"","time":""}'
+`bash ~/.config/eww/scripts/datetime-listener.sh`)
 
 ;; Widgets
 (defwidget bar []
   (centerbox :class "bar"
-             :orientation "h"
+    :orientation "h"
     (box :class "left"
-         :halign "start"
-         :space-evenly false
-      (label :class "app-name" :text "${hypr.class}"))
+      :halign "start"
+      :space-evenly false
+      (label :class "app-name" :text "${hypr.class}")
+    )
     
     (box :class "center"
-         :halign "center"
-         :space-evenly false
-      (workspaces))
+      :halign "center"
+      :space-evenly false
+      (workspaces)
+    )
     
     (box :class "right"
-         :halign "end"
-         :space-evenly false
-         :spacing 15
+      :halign "end"
+      :space-evenly false
+      :spacing 5
       (network-widget)
       (battery-widget)
-      (datetime-widget))))
+      (datetime-widget)
+    )
+  )
+)
 
 (defwidget workspaces []
   (box :class "workspaces"
-       :orientation "h"
-       :space-evenly false
-       :spacing 5
+    :orientation "h"
+    :space-evenly false
+    :spacing 5
     (for ws in "${hypr.workspace_array}"
       (button
         :class "workspace ${hypr.active_workspace == ws ? 'active' : ''}"
         :onclick "hyprctl dispatch workspace ${ws}"
-        (label :text "${ws}")))))
+        (label :text "${ws}")
+      )
+    )
+  )
+)
 
 (defwidget network-widget []
   (box :class "network"
-       :orientation "h"
-       :space-evenly false
-       :spacing 8
+    :orientation "h"
+    :space-evenly false
+    :spacing 10
     (label :class "icon" :text "${network.connected ? '󰖩' : '󰖪'}")
-    (label :class "text" :text "${network.connected && network.type == 'wifi' ? network.ssid : ''}")))
+    ;;(label :class "text" :text "${network.connected && network.type == 'wifi' ? network.ssid : ''}")
+  )
+)
 
 (defwidget battery-widget []
-  (box :class "battery"
-       :orientation "h"
-       :space-evenly false
-       :spacing 8
-    (label :class "icon" :text "${battery.status == 'Charging' ? '󰂄' : 
-                                  battery.capacity >= 90 ? '󰁹' :
-                                  battery.capacity >= 70 ? '󰂀' :
-                                  battery.capacity >= 50 ? '󰁾' :
-                                  battery.capacity >= 30 ? '󰁼' :
-                                  battery.capacity >= 10 ? '󰁺' : '󰂎'}")
-    (label :class "text" :text "${battery.capacity}%")))
+  (overlay
+    (scale :class "battery-scale ${battery.capacity >= 95 ? 'full' : ''} ${battery.status == 'Charging' ? 'charging' : battery.capacity <= 20 ? 'low' : 'normal'}"
+      :value "${battery.capacity}"
+      :min 0
+      :max 100
+    :orientation "h")
+    (label :class "battery-text"
+      :text "${battery.capacity}"
+    :halign "center")
+))
 
 (defwidget datetime-widget []
   (box :class "datetime"
-       :orientation "h"
-       :space-evenly false
-    (label :class "text" :text "${datetime.date} ${datetime.time}")))
+    :orientation "h"
+    :space-evenly false
+    (label :class "text" :text "${datetime.date} ${datetime.time}")
+  )
+)
 
 ;; Windows
 (defwindow bar
   :monitor 0
   :windowtype "dock"
   :geometry (geometry :x "0%"
-                      :y "10px"
-                      :width "100%"
-                      :height "30px"
-                      :anchor "top center")
+    :y "10px"
+    :width "100%"
+    :height "30px"
+  :anchor "top center")
   :reserve (struts :side "top" :distance "30px")
   :stacking "fg"
   :exclusive true
-  (bar))
+  (bar)
+)
