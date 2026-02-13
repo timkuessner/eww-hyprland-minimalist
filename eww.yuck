@@ -33,11 +33,11 @@
       :halign "end"
       :space-evenly false
       :spacing 5
-      (box :class "container"
+      (box :class "container pr8"
         (network-widget)
         (bluetooth-widget)
       )
-      (box :class "container battery"
+      (box :class "container pr8"
         (battery-widget)
       )
       (box :class "container"
