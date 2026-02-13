@@ -14,12 +14,21 @@
 .center,
 .right {
   background-color: rgba($color: #fff, $alpha: 0.3);
-  padding: 0px 15px;
+  padding: 0px 5px;
   border-radius: 15px;
 }
 
-.center {
-  padding: 0px 5px;
+.container {
+  background-color: rgba(255, 255, 255, 0.3);
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding-right: 10px;
+  padding-left: 10px;
+  border-radius: 10px;
+}
+
+.container.battery {
+  padding-right: 8px;
 }
 
 .workspace label {
@@ -38,6 +47,7 @@
 }
 
 .workspace.active label {
+  background-color: rgba(255, 255, 255, 0.5);
   padding-right: 20px;
   padding-left: 20px;
 }
@@ -62,7 +72,7 @@
 
 .battery-progress trough {
   border: 2px solid #000;
-  margin: 8px 0px;
+  margin: 3px 0px;
   min-width: 20px;
   min-height: 10px;
   border-radius: 5px;
@@ -97,7 +107,7 @@
 }
 
 .battery-cap {
-  margin: 12px 0px 12px 27px;
+  margin: 7px 0px 7px 27px;
   background: #000;
   border-radius: 0px 3px 3px 0px;
 }

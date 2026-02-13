@@ -3,6 +3,8 @@
 `bash ~/.config/eww/scripts/hyprland-listener.sh`)
 (deflisten network :initial '{"connected":false}'
 `bash ~/.config/eww/scripts/network-listener.sh`)
+(deflisten bluetooth :initial '{"powered":false,"connected":false}'
+`bash ~/.config/eww/scripts/bluetooth-listener.sh`)
 (deflisten battery :initial '{"capacity":0,"status":"Unknown"}'
 `bash ~/.config/eww/scripts/battery-listener.sh`)
 (deflisten datetime :initial '{"date":"","time":""}'
@@ -15,7 +17,10 @@
     (box :class "left"
       :halign "start"
       :space-evenly false
-      (label :class "app-name" :text "${hypr.class}")
+      :spacing 5
+      (box :class "container"
+        (label :class "app-name" :text "${hypr.class}")
+      )
     )
     
     (box :class "center"
@@ -28,9 +33,16 @@
       :halign "end"
       :space-evenly false
       :spacing 5
-      (network-widget)
-      (battery-widget)
-      (datetime-widget)
+      (box :class "container"
+        (network-widget)
+        (bluetooth-widget)
+      )
+      (box :class "container battery"
+        (battery-widget)
+      )
+      (box :class "container"
+        (datetime-widget)
+      )
     )
   )
 )
@@ -53,10 +65,16 @@
 (defwidget network-widget []
   (box :class "network"
     :orientation "h"
-    :space-evenly false
-    :spacing 10
     (label :class "icon" :text "${network.connected ? '󰖩' : '󰖪'}")
     ;;(label :class "text" :text "${network.connected && network.type == 'wifi' ? network.ssid : ''}")
+  )
+)
+
+(defwidget bluetooth-widget []
+  (box :class "bluetooth"
+    :orientation "h"
+    (label :class "icon"
+      :text "${bluetooth.powered ? (bluetooth.connected ? '󰂯' : '󰂲') : '󰂲'}")
   )
 )
 
