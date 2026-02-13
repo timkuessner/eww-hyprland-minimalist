@@ -65,12 +65,12 @@
   margin: 8px 0px;
   min-width: 20px;
   min-height: 10px;
-  border-radius: 6px;
+  border-radius: 5px;
 }
 
 .battery-progress trough progress {
   all: unset;
-  border-radius: 4px 0px 0px 4px;
+  border-radius: 3px 0px 0px 3px;
   min-height: 10px;
 }
 
@@ -87,13 +87,13 @@
 }
 
 .battery-progress.full trough progress {
-  border-radius: 4px;
+  border-radius: 3px;
 }
 
 .battery-text {
-  font-size: 9px;
-  font-weight: 600;
-  margin: 0px 2px 0px 0px;
+  font-size: 10px;
+  font-weight: 700;
+  margin: 1px 2px 0px 0px;
 }
 
 .battery-cap {
