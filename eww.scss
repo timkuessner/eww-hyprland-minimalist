@@ -47,31 +47,31 @@
 }
 
 .battery-container {
-  min-width: 38px;
-  min-height: 14px;
+  min-width: 30px;
+  min-height: 12px;
   padding: 0px;
   margin: 0px;
 }
 
 .battery-progress {
   min-width: 28px;
-  min-height: 12px;
+  min-height: 10px;
   padding: 0px;
   margin: 0px 2px 0px 0px;
 }
 
 .battery-progress trough {
   border: 2px solid #000;
-  margin: 7px 0px;
-  min-width: 28px;
-  min-height: 12px;
+  margin: 8px 0px;
+  min-width: 20px;
+  min-height: 10px;
   border-radius: 6px;
 }
 
 .battery-progress trough progress {
   all: unset;
   border-radius: 4px 0px 0px 4px;
-  min-height: 12px;
+  min-height: 10px;
 }
 
 .battery-progress.normal trough progress {
@@ -91,13 +91,13 @@
 }
 
 .battery-text {
-  font-size: 11px;
+  font-size: 9px;
   font-weight: 600;
   margin: 0px 2px 0px 0px;
 }
 
 .battery-cap {
-  margin: 11px 0px 11px 34px;
+  margin: 12px 0px 12px 27px;
   background: #000;
   border-radius: 0px 3px 3px 0px;
 }

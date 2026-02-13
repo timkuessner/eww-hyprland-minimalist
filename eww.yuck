@@ -65,7 +65,7 @@
     (box :class "battery-container")
     (overlay
       (progress
-        :class "battery-progress ${battery.capacity >= 95 ? 'full' : ''} ${battery.status == 'Charging' ? 'charging' : battery.capacity <= 20 ? 'low' : 'normal'}"
+        :class "battery-progress ${battery.capacity >= 95 ? 'full' : ''} ${battery.status == 'Charging' || battery.status == 'Full' ? 'charging' : battery.capacity <= 20 ? 'low' : 'normal'}"
         :value "${battery.capacity}"
       :orientation "h")
       (label :class "battery-text" :text "${battery.capacity}" :halign "center")
